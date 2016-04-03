@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,38 +13,66 @@ namespace ZooApp.Services
     {
         //create a db obj
         ZooContext db = new ZooContext();
-        public List<ViewAnimal> GetAnimals()
+        public List<ViewAnimal> GetAll()
         {
-           
-            
 
             //fetch db.animal data, and pull all rows table into RAM
-            List<Animal> animals = db.Animals.ToList();
+            var animals = db.Animals.ToList();
 
             //convert this data into view data
-            List<ViewAnimal> viewAnimals = new List<ViewAnimal>();
-            foreach (Animal animal in animals)
+            var viewAnimals = new List<ViewAnimal>();
+            foreach (var animal in animals)
             {
-                ViewAnimal viewAnimal = new ViewAnimal()
-                {
-                    Name = animal.Name,
-                    Origin = animal.Origin
+                //var viewAnimal = new ViewAnimal()
+                //{
+                //    Name = animal.Name,
+                //    Id = animal.Id,
+                //    Quantity = animal.Quantity,
+                //    Origin = animal.Origin
 
-                };
+                //};
+                var viewAnimal = new ViewAnimal(animal);
                 viewAnimals.Add(viewAnimal);
             }
             //return
             return viewAnimals;
-             
         }
 
-        public ViewAnimal GetAnimal(int id)
+        public ViewAnimal Get(int id)
         {
-          Animal animal =  db.Animals.Find(id);
-            return new ViewAnimal()
-            {
-                Origin = animal.Origin
-            }; 
+            var animal = db.Animals.Find(id);
+            return new ViewAnimal(animal);
+            //return new ViewAnimal()
+            //{
+            //    Name = animal.Name,
+            //    Id = animal.Id,
+            //    Quantity = animal.Quantity,
+            //    Origin = animal.Origin
+            //};
+        }
+        public bool Save(Animal animal)
+        {
+            db.Animals.Add(animal);
+            db.SaveChanges();
+            return true;
+        }
+        public bool Update(Animal animal)
+        {
+            db.Entry(animal).State = EntityState.Modified;
+            db.SaveChanges();
+            return true;
+        }
+        public bool Delete(Animal animal)
+        {
+            Animal entity = db.Animals.Find(animal.Id);
+            db.Animals.Remove(entity);
+            db.SaveChanges();
+            return true;
+        }
+
+        public Animal GetDbModel(int id)
+        {
+            return db.Animals.Find(id);
         }
     }
 }

@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZooApp.Models;
 
 namespace ZooApp.ViewModels
 {
     public class ViewAnimal
     {
-        public int AnimalId { get; set; }
+        public ViewAnimal(Animal animal)
+        {
+            Name = animal.Name;
+            Id = animal.Id;
+            Quantity = animal.Quantity;
+            Origin = animal.Origin;
+        }
+        public int Id { get; set; }
+
         public string Name { get; set; }
-        public string Food { get; set; }
+
         public string Origin { get; set; }
+
         public int Quantity { get; set; }
     }
+    
 }
