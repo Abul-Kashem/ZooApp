@@ -3,14 +3,16 @@ namespace ZooApp.Models.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class AnimalModels : DbMigration
     {
         public override void Up()
         {
+            AddColumn("dbo.Animals", "Quantity", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
+            DropColumn("dbo.Animals", "Quantity");
         }
     }
 }
