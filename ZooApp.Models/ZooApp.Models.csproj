@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animal.cs" />
-    <Compile Include="Migrations\201604030623027_AnimalModels.cs" />
-    <Compile Include="Migrations\201604030623027_AnimalModels.Designer.cs">
-      <DependentUpon>201604030623027_AnimalModels.cs</DependentUpon>
+    <Compile Include="Migrations\201604030719141_AnimalFoods.cs" />
+    <Compile Include="Migrations\201604030719141_AnimalFoods.Designer.cs">
+      <DependentUpon>201604030719141_AnimalFoods.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,8 +63,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604030623027_AnimalModels.resx">
-      <DependentUpon>201604030623027_AnimalModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604030719141_AnimalFoods.resx">
+      <DependentUpon>201604030719141_AnimalFoods.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

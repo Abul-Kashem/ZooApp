@@ -12,7 +12,7 @@ namespace ZooApp.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AnimalId { get; set; }
+        public int Id { get; set; }
         [Required]
         [StringLength(50)]
         [Index("Ix_AnimalName")]

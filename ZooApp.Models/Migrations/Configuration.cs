@@ -26,10 +26,6 @@ namespace ZooApp.Models.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-          
-
-            //context.Animals.Add(new Animal() { Food = "Fish", Name = "Dolphin", Origin = "Asia", Quantity = 20 });
-            //context.SaveChanges();
         }
     }
 }
