@@ -43,6 +43,8 @@
     <Compile Include="ViewAnimal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewFood.cs" />
+    <Compile Include="ViewFoodAnimalTotal.cs" />
+    <Compile Include="ViewFoodTotal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZooApp.Models\ZooApp.Models.csproj">

@@ -7,19 +7,33 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ZooApp.Models;
+using ZooApp.Services;
+using ZooApp.ViewModels;
 
 namespace ZooApp.MvcClient.Controllers
 {
     public class AnimalFoodsController : Controller
     {
         private ZooContext db = new ZooContext();
-
+        AnimalFoodServices service = new AnimalFoodServices();
         // GET: AnimalFoods
         public ActionResult Index()
         {
-            var animalFoods = db.AnimalFoods.Include(a => a.Animal).Include(a => a.Food);
-            return View(animalFoods.ToList());
+            List<ViewFoodTotal> result = service.GetViewFoodTotals();
+
+            ViewBag.TotalPrice = result.Sum(x => x.TotalPrice);
+
+            return View(result);
         }
+
+
+        public ActionResult AnimalFoodDetails(int id)
+        {
+            var foodTotals = service.GetViewFoodTotalsByFood(id);
+            ViewBag.TotalPrice = foodTotals.Sum(x => x.TotalPrice);
+            return View(foodTotals);
+        }
+        
 
         // GET: AnimalFoods/Details/5
         public ActionResult Details(int? id)

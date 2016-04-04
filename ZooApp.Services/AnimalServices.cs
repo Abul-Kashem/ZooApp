@@ -15,7 +15,6 @@ namespace ZooApp.Services
         ZooContext db = new ZooContext();
         public List<ViewAnimal> GetAll()
         {
-
             //fetch db.animal data, and pull all rows table into RAM
             var animals = db.Animals.ToList();
 
